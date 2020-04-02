@@ -31,8 +31,7 @@ jobs:
 
     - run: |
         az group create -n ${{ env.AZURE_GROUP_NAME }} -l eastus 
-        az group deployment create -n ghaction -g ${{ env.AZURE_GROUP_NAME }} --template-file deployment/azuredeploy.json
-
+        az group deployment create -n ghaction -g ${{ env.AZURE_GROUP_NAME }} --template-file deployment/azuredeploy.json --parameters myWebAppName=${{ env.AZURE_WEBAPP_NAME }}
 
     # deploy web app using Azure credentials
     - name: 'Azure webapp deploy'
